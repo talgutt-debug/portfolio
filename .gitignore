@@ -1,0 +1,11 @@
+# OS / editor
+.DS_Store
+.claude/
+
+# Source materials (not part of the built site)
+*.pdf
+Screenshot*.png
+WhatsApp*.jpeg
+Creative Agency/
+jiminy-archive/
+*.zip
