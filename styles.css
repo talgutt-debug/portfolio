@@ -10,7 +10,7 @@
   --dark:#1b1a18;
   --maxw:1180px;
   --pad:clamp(20px,5vw,72px);
-  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --display:"EB Garamond",Georgia,"Times New Roman",serif;
   --body:"Inter",system-ui,sans-serif;
 }
 
@@ -37,8 +37,8 @@ em{font-style:italic}
   border-bottom:1px solid var(--line);
 }
 .wordmark{
-  font-family:var(--display);font-weight:700;letter-spacing:-.02em;
-  text-decoration:none;font-size:1.05rem;
+  font-family:var(--display);font-weight:600;letter-spacing:-.01em;
+  text-decoration:none;font-size:1.2rem;
 }
 .nav-links{display:flex;gap:clamp(14px,3vw,34px)}
 .nav-links a{
@@ -58,8 +58,8 @@ em{font-style:italic}
   padding:clamp(40px,9vh,110px) var(--pad);
 }
 .hero-name{
-  font-family:var(--display);font-weight:500;letter-spacing:-.02em;
-  font-size:clamp(3rem,9vw,7rem);line-height:.96;margin:0;
+  font-family:var(--display);font-weight:600;letter-spacing:-.01em;
+  font-size:clamp(3.2rem,9.5vw,7.5rem);line-height:.98;margin:0;
 }
 .hero-tagline{
   font-family:var(--display);font-style:italic;font-weight:400;
@@ -103,8 +103,8 @@ em{font-style:italic}
   letter-spacing:.12em;text-transform:uppercase;font-size:.72rem;color:var(--muted);
 }
 .section-head .big{
-  font-family:var(--display);font-weight:500;letter-spacing:-.01em;
-  font-size:clamp(1.9rem,4vw,3rem);line-height:1.08;margin:.4em 0 0;max-width:18ch;
+  font-family:var(--display);font-weight:600;letter-spacing:-.005em;
+  font-size:clamp(2.1rem,4.4vw,3.2rem);line-height:1.08;margin:.4em 0 0;max-width:18ch;
 }
 .section-intro{max-width:54ch;color:var(--muted);margin:.9em 0 0;font-size:1.1rem}
 
@@ -112,8 +112,8 @@ em{font-style:italic}
 .project{padding-top:clamp(40px,7vh,80px)}
 .project:first-of-type{padding-top:clamp(28px,4vh,46px)}
 .project-head h2{
-  font-family:var(--display);font-weight:500;letter-spacing:-.01em;
-  font-size:clamp(1.7rem,3.4vw,2.5rem);margin:0;line-height:1.1;
+  font-family:var(--display);font-weight:600;letter-spacing:-.005em;
+  font-size:clamp(1.8rem,3.6vw,2.7rem);margin:0;line-height:1.1;
 }
 .meta{color:var(--muted);font-size:.9rem;margin:.6em 0 0;font-family:var(--body);font-weight:500;letter-spacing:.01em}
 .project-body{margin:clamp(18px,3vh,30px) 0}

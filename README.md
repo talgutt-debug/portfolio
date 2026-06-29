@@ -1,4 +1,4 @@
-# Tal Gutman — Portfolio
+# Tal Guttman — Portfolio
 
 A static, single-page portfolio. No build step.
 
