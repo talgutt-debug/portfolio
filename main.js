@@ -96,6 +96,60 @@ document.querySelectorAll('.room').forEach(room => {
 mdModal.addEventListener('click', e => { if (e.target === mdModal || e.target.closest('.md-close')) closeMd(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !mdModal.hidden) closeMd(); });
 
+// ===== Social carousel =====
+document.querySelectorAll('.carousel').forEach(carousel => {
+  const track = carousel.querySelector('.carousel-track');
+  const slides = [...track.children];
+  const prev = carousel.querySelector('.carousel-btn.prev');
+  const next = carousel.querySelector('.carousel-btn.next');
+  const dotsWrap = carousel.querySelector('.carousel-dots');
+
+  // dots
+  const dots = slides.map((_, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    b.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  function step(){ return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : slides[0].offsetWidth; }
+  function maxScroll(){ return track.scrollWidth - track.clientWidth; }
+  function atEnd(){ return track.scrollLeft >= maxScroll() - 2; }
+  function current(){
+    if (atEnd()) return slides.length - 1;
+    return Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / step())));
+  }
+  function goTo(i){
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollLeft = Math.max(0, Math.min(i * step(), maxScroll()));
+    update();
+  }
+  function update(){
+    const i = current();
+    dots.forEach((d, di) => d.setAttribute('aria-selected', di === i ? 'true' : 'false'));
+    if (prev) prev.disabled = track.scrollLeft <= 2;
+    if (next) next.disabled = atEnd();
+  }
+
+  prev && prev.addEventListener('click', () => goTo(current() - 1));
+  next && next.addEventListener('click', () => goTo(current() + 1));
+
+  let raf;
+  track.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); });
+  window.addEventListener('resize', update);
+
+  // open slides in the lightbox
+  slides.forEach(s => {
+    const img = s.querySelector('img');
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  update();
+});
+
 // ===== Contact form -> mailto (no backend) =====
 const form = document.getElementById('contact-form');
 form.addEventListener('submit', e => {

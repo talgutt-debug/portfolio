@@ -183,6 +183,44 @@ em{font-style:italic}
 .shot.paper img{aspect-ratio:3/4;object-fit:contain;padding:6px;background:#fff}
 .shot:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.12)}
 
+/* ===== Carousel (social) ===== */
+.carousel{position:relative;margin-top:clamp(22px,3.5vh,36px)}
+.carousel-track{
+  display:flex;gap:clamp(12px,1.6vw,18px);
+  overflow-x:auto;scroll-snap-type:x proximity;
+  padding-bottom:6px;scrollbar-width:none;-ms-overflow-style:none;
+}
+.carousel-track::-webkit-scrollbar{display:none}
+.carousel-slide{
+  flex:0 0 auto;margin:0;scroll-snap-align:start;
+  width:clamp(230px,30vw,300px);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  background:#2a0d18;cursor:zoom-in;
+}
+.carousel-slide img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.carousel-btn{
+  position:absolute;top:calc(50% - 18px);transform:translateY(-50%);z-index:2;
+  width:46px;height:46px;border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;font-size:1.5rem;line-height:1;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);color:var(--ink);
+  border:1px solid var(--line);backdrop-filter:blur(6px);
+  transition:background .2s,color .2s,opacity .2s;
+}
+.carousel-btn:hover{background:var(--ink);color:var(--bg)}
+.carousel-btn.prev{left:-10px}
+.carousel-btn.next{right:-10px}
+.carousel-btn[disabled]{opacity:.25;cursor:default;pointer-events:none}
+.carousel-dots{display:flex;justify-content:center;gap:9px;margin-top:18px}
+.carousel-dots button{
+  width:8px;height:8px;border-radius:50%;padding:0;cursor:pointer;
+  border:1px solid var(--ink);background:transparent;transition:background .2s,transform .2s;
+}
+.carousel-dots button[aria-selected="true"]{background:var(--ink);transform:scale(1.25)}
+@media (max-width:600px){
+  .carousel-slide{width:78%}
+  .carousel-btn{display:none}
+}
+
 /* full-bleed booth */
 .bleed{margin:clamp(22px,3.5vh,36px) 0 0}
 .bleed img{width:100%;border-radius:10px;border:1px solid var(--line);background:#d8c9aa;cursor:zoom-in}
